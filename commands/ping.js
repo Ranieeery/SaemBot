@@ -1,13 +1,12 @@
-const { SlashCommandBuilder, AttachmentBuilder } = require("discord.js")
-
-const file = new AttachmentBuilder('../assets/dog.jpg');
+const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName("dogao")
-        .setDescription("manda um dogão"),
+  data: new SlashCommandBuilder()
+    .setName("ping")
+    .setDescription("Retorna o delay do bot"),
 
-    async execute(interaction) {
-        await interaction.reply("https://raw.githubusercontent.com/Ranieeery/Alura/main/Imers%C3%A3o%20Java/figsWhatsapp/img/dog.jpg")
-    }
-}
+  async execute(interaction) {
+    const sent = await interaction.reply({ content: 'Latindo...', fetchReply: true });
+    interaction.editReply(`Au au 🐶, a latência é de ${sent.createdTimestamp - interaction.createdTimestamp}ms`);
+  },
+};

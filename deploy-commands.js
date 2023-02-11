@@ -18,10 +18,8 @@ for (const file of commandFiles) {
   commands.push(command.data.toJSON());
 }
 
-// instância REST
 const rest = new REST({ version: "10" }).setToken(TOKEN);
 
-// deploy
 (async () => {
   try {
     console.log(`Resetando ${commands.length} comandos...`);
